@@ -60,10 +60,11 @@ public class LargeCalcDemoCommandLineRunner implements CommandLineRunner {
         
         logger.info("calculated " + compensation.size() + " comp records");
         
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
         BigDecimal totalCompensation = accumulateAmount(compensation);
         BigDecimal totalCompEventAmount = accumulateAmount(compensableEvents);
-        logger.info("total comp event amount: {}", NumberFormat.getCurrencyInstance().format(totalCompEventAmount));
-        logger.info("total compensation: {}", NumberFormat.getCurrencyInstance().format(totalCompensation));
+        logger.info("total comp event amount: {}", currencyFormat.format(totalCompEventAmount));
+        logger.info("total compensation: {}", currencyFormat.format(totalCompensation));
     }
 
 }
