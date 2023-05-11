@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  *
  * @author aar1069
  */
-public class PayeeAllocation implements Serializable {
+public class PayeeAllocation implements Serializable, AmountObject {
     
     public PayeeAllocation(EventAllocation eventAllocation) {
         this.eventAllocation = eventAllocation;
@@ -48,10 +48,12 @@ public class PayeeAllocation implements Serializable {
         this.eventAllocation = eventAllocation;
     }
 
+    @Override
     public BigDecimal getAmount() {
         return amount;
     }
 
+    @Override
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }

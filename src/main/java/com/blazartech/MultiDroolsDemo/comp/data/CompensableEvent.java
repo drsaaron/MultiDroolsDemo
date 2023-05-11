@@ -12,7 +12,7 @@ import java.math.BigDecimal;
  *
  * @author aar1069
  */
-public class CompensableEvent implements Serializable {
+public class CompensableEvent implements Serializable, AmountObject {
     
     private long id;
     private String productContractNumber;
@@ -43,10 +43,12 @@ public class CompensableEvent implements Serializable {
         this.productContractNumber = productContractNumber;
     }
 
+    @Override
     public BigDecimal getAmount() {
         return amount;
     }
 
+    @Override
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }

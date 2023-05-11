@@ -5,6 +5,7 @@
  */
 package com.blazartech.MultiDroolsDemo;
 
+import com.blazartech.MultiDroolsDemo.comp.data.AmountObject;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
 import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
@@ -33,6 +34,12 @@ public class LargeCalcDemoCommandLineRunner implements CommandLineRunner {
 
     private static final int EVENT_COUNT = 100000;
 
+    private BigDecimal accumulateAmount(Collection<? extends AmountObject> collection) {
+        return collection.stream()
+                .map(AmountObject::getAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+    
     @Override
     public void run(String... args) throws Exception {
         logger.info("calculating for " + EVENT_COUNT + " compensable events");
@@ -53,12 +60,8 @@ public class LargeCalcDemoCommandLineRunner implements CommandLineRunner {
         
         logger.info("calculated " + compensation.size() + " comp records");
         
-        BigDecimal totalCompensation = compensation.stream()
-                .map(c -> c.getAmount())
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-        BigDecimal totalCompEventAmount = compensableEvents.stream()
-                .map(e -> e.getAmount())
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totalCompensation = accumulateAmount(compensation);
+        BigDecimal totalCompEventAmount = accumulateAmount(compensableEvents);
         logger.info("total comp event amount: {}", NumberFormat.getCurrencyInstance().format(totalCompEventAmount));
         logger.info("total compensation: {}", NumberFormat.getCurrencyInstance().format(totalCompensation));
     }
