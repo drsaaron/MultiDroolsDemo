@@ -10,6 +10,7 @@ import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
 import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
 import com.blazartech.MultiDroolsDemo.comp.process.drools.DroolsCalculationService;
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import org.slf4j.Logger;
@@ -51,6 +52,15 @@ public class LargeCalcDemoCommandLineRunner implements CommandLineRunner {
         Collection<PayeeAllocation> compensation = calcService.deriveCompensationForCompensableEvent(compensableEvents);
         
         logger.info("calculated " + compensation.size() + " comp records");
+        
+        BigDecimal totalCompensation = compensation.stream()
+                .map(c -> c.getAmount())
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        BigDecimal totalCompEventAmount = compensableEvents.stream()
+                .map(e -> e.getAmount())
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        logger.info("total comp event amount: {}", NumberFormat.getCurrencyInstance().format(totalCompEventAmount));
+        logger.info("total compensation: {}", NumberFormat.getCurrencyInstance().format(totalCompensation));
     }
 
 }
