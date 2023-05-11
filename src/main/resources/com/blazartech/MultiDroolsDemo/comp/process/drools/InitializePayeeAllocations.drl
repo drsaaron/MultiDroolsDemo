@@ -1,0 +1,53 @@
+package com.blazartech.MultiDroolsDemo.comp.process.drools;
+
+dialect 'mvel';
+dialect 'java';
+
+import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationProgram;
+import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
+
+// initialize the payee allocations and set the compensation rates for payable transactions
+rule 'Determine compensation rate, whole life, FYC'
+when
+    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == CompensationProduct.WholeLife && program == CompensationProgram.FYC)
+then   
+    PayeeAllocation payeeAllocation = new PayeeAllocation(eventAllocation);
+    payeeAllocation.setThresholdType(ThresholdType.Below);
+    insert(payeeAllocation);
+end
+
+rule 'Determine compensation rate, whole life, Renewal'
+when
+    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == CompensationProduct.WholeLife && program == CompensationProgram.RenewalCommission)
+then   
+    PayeeAllocation payeeAllocation = new PayeeAllocation(eventAllocation);
+    payeeAllocation.setThresholdType(ThresholdType.Below);
+    insert(payeeAllocation);
+end
+
+rule 'Determine compensation rate, annuity, FYC'
+when
+    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == CompensationProduct.VariableAnnuity && program == CompensationProgram.FYC)
+then   
+    PayeeAllocation payeeAllocation = new PayeeAllocation(eventAllocation);
+    payeeAllocation.setThresholdType(ThresholdType.Below);    
+
+    PayeeAllocation payeeAllocation2 = new PayeeAllocation(eventAllocation);
+    payeeAllocation2.setThresholdType(ThresholdType.Above);    
+
+    insert(payeeAllocation);
+    insert(payeeAllocation2);
+end
+
+rule 'Determine compensation rate, annuity, Renewal'
+when
+    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == CompensationProduct.VariableAnnuity && program == CompensationProgram.RenewalCommission)
+then   
+    PayeeAllocation payeeAllocation = new PayeeAllocation(eventAllocation);
+    payeeAllocation.setThresholdType(ThresholdType.Below);  
+    insert(payeeAllocation);
+end
+

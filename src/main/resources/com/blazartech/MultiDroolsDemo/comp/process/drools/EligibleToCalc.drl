@@ -1,0 +1,20 @@
+package com.blazartech.MultiDroolsDemo.comp.process.drools;
+
+dialect 'mvel';
+dialect 'java';
+
+import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationProgram;
+import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
+
+// determine if a transaction is eligible to calc
+rule 'Determine isPayable'
+when
+    eventAllocation: EventAllocation(program != null)
+then
+    eventAllocation.setEligibleToCalc(true);
+    update(eventAllocation);
+end
+

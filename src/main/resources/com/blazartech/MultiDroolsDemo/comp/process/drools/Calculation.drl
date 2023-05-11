@@ -1,0 +1,19 @@
+package com.blazartech.MultiDroolsDemo.comp.process.drools;
+
+dialect 'mvel';
+dialect 'java';
+
+import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationProgram;
+import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
+
+// calculate the compensation on all created allocations
+rule 'calculate compensation'
+when
+    payeeAllocation: PayeeAllocation(amount == null, payeeAllocation.compensationRate > 0)
+then
+    payeeAllocation.setAmount(payeeAllocation.getEventAllocation().getCompensableEvent().getAmount() * payeeAllocation.getCompensationRate());
+    update(payeeAllocation);
+end
