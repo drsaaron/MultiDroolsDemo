@@ -5,13 +5,13 @@
 
     <groupId>com.blazartech</groupId>
     <artifactId>MultiDroolsDemo</artifactId>
-    <version>0.0.8-SNAPSHOT</version>
+    <version>0.0.9-SNAPSHOT</version>
     <name>MultiDroolsDemo</name>
         
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.0.6</version>
+        <version>3.1.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
         
@@ -66,12 +66,12 @@
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-ci</artifactId>
-            <version>8.39.0.Final</version>
+            <version>8.40.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-decisiontables</artifactId>
-            <version>8.39.0.Final</version>
+            <version>8.40.0.Final</version>
         </dependency>
         
         <!-- provider -->
@@ -94,7 +94,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>3.1.2</version>
             </plugin> 
         </plugins>
     </build>
