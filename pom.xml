@@ -5,7 +5,7 @@
 
     <groupId>com.blazartech</groupId>
     <artifactId>MultiDroolsDemo</artifactId>
-    <version>0.0.9-SNAPSHOT</version>
+    <version>0.0.10-SNAPSHOT</version>
     <name>MultiDroolsDemo</name>
         
     <parent>
@@ -66,12 +66,12 @@
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-ci</artifactId>
-            <version>8.40.0.Final</version>
+            <version>8.41.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-decisiontables</artifactId>
-            <version>8.40.0.Final</version>
+            <version>8.41.0.Final</version>
         </dependency>
         
         <!-- provider -->
