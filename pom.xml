@@ -5,13 +5,13 @@
 
     <groupId>com.blazartech</groupId>
     <artifactId>MultiDroolsDemo</artifactId>
-    <version>0.0.10-SNAPSHOT</version>
+    <version>0.0.11-SNAPSHOT</version>
     <name>MultiDroolsDemo</name>
         
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.2</version>
+        <version>3.1.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
         
@@ -66,12 +66,12 @@
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-ci</artifactId>
-            <version>8.41.0.Final</version>
+            <version>8.42.0.Final</version>
         </dependency>
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-decisiontables</artifactId>
-            <version>8.41.0.Final</version>
+            <version>8.42.0.Final</version>
         </dependency>
         
         <!-- provider -->
@@ -89,6 +89,14 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+	    <plugin>
+	      <groupId>org.codehaus.mojo</groupId>
+	      <artifactId>versions-maven-plugin</artifactId>
+	      <configuration>
+		<rulesUri>file:versionUpdateExclude.xml</rulesUri>
+	      </configuration>
+	    </plugin>
             
             <!-- plugin to make junit5 work -->
             <plugin>
