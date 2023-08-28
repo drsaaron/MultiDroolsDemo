@@ -77,7 +77,7 @@ public class DroolsCalculationServiceImpl implements DroolsCalculationService {
 
     @Override
     public Collection<PayeeAllocation> deriveCompensationForCompensableEvent(CompensableEvent compensableEvent) {
-        logger.info("deriving compensation for " + compensableEvent);
+        logger.debug("deriving compensation for " + compensableEvent);
 
         KieSession kieSession = sessionProvider.get();
         kieSession.insert(compensableEvent);

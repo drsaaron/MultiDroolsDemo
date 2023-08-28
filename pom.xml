@@ -5,7 +5,7 @@
 
     <groupId>com.blazartech</groupId>
     <artifactId>MultiDroolsDemo</artifactId>
-    <version>0.0.12-SNAPSHOT</version>
+    <version>0.0.13-SNAPSHOT</version>
     <name>MultiDroolsDemo</name>
         
     <parent>
