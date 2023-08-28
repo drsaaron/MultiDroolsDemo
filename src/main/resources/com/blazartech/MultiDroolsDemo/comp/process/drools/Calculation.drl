@@ -14,6 +14,6 @@ rule 'calculate compensation'
 when
     payeeAllocation: PayeeAllocation(amount == null, payeeAllocation.compensationRate > 0)
 then
-    payeeAllocation.setAmount(payeeAllocation.getEventAllocation().getCompensableEvent().getAmount() * payeeAllocation.getCompensationRate());
+    payeeAllocation.amount = payeeAllocation.eventAllocation.compensableEvent.amount * payeeAllocation.compensationRate;
     update(payeeAllocation);
 end
