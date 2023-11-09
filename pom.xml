@@ -5,19 +5,19 @@
 
     <groupId>com.blazartech</groupId>
     <artifactId>MultiDroolsDemo</artifactId>
-    <version>0.0.14-SNAPSHOT</version>
+    <version>0.0.15-SNAPSHOT</version>
     <name>MultiDroolsDemo</name>
         
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.4</version>
+        <version>3.1.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
         
     <description>Demo of use of drools, combining drl and decision table representations of rules</description>
     <properties>
-        <java.version>21</java.version>
+        <maven.compiler.release>21</maven.compiler.release>
     </properties>
         
     <dependencies>
@@ -71,7 +71,7 @@
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-decisiontables</artifactId>
-            <version>8.43.0.Final</version>
+            <version>8.44.0.Final</version>
         </dependency>
         
         <!-- provider -->
