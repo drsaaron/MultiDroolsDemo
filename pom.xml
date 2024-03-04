@@ -5,13 +5,13 @@
 
     <groupId>com.blazartech</groupId>
     <artifactId>MultiDroolsDemo</artifactId>
-    <version>0.0.16-SNAPSHOT</version>
+    <version>0.0.17-SNAPSHOT</version>
     <name>MultiDroolsDemo</name>
         
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.2.1</version>
+        <version>3.2.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
         
@@ -98,12 +98,6 @@
 	      </configuration>
 	    </plugin>
             
-            <!-- plugin to make junit5 work -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.1.2</version>
-            </plugin> 
         </plugins>
     </build>
 
