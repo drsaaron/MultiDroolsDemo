@@ -5,7 +5,7 @@
  */
 package com.blazartech.MultiDroolsDemo.rate.process;
 
-import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
+import com.blazartech.MultiDroolsDemo.comp.data.Product;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationProgram;
 import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
 import com.blazartech.MultiDroolsDemo.rate.data.CompensationRate;
@@ -16,5 +16,5 @@ import com.blazartech.MultiDroolsDemo.rate.data.CompensationRate;
  */
 public interface DetermineCompensationRatePAB {
     
-    public CompensationRate determineRate(CompensationProgram program, CompensationProduct product, ThresholdType thresholdType);
+    public CompensationRate determineRate(CompensationProgram program, Product product, ThresholdType thresholdType);
 }

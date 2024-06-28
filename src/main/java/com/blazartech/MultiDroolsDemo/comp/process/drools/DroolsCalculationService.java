@@ -7,7 +7,7 @@ package com.blazartech.MultiDroolsDemo.comp.process.drools;
 
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
 import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
-import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import java.util.Collection;
 
 /**
@@ -16,11 +16,11 @@ import java.util.Collection;
  */
 public interface DroolsCalculationService {
     
-    public Collection<PayeeAllocation> deriveCompensation(EventAllocation eventAllocation);
+    public Collection<CompensationRecord> deriveCompensation(EventAllocation eventAllocation);
     
-    public Collection<PayeeAllocation> deriveCompensation(Collection<EventAllocation> eventAllocations);
+    public Collection<CompensationRecord> deriveCompensation(Collection<EventAllocation> eventAllocations);
     
-    public Collection<PayeeAllocation> deriveCompensationForCompensableEvent(CompensableEvent compensableEvent);
+    public Collection<CompensationRecord> deriveCompensationForCompensableEvent(CompensableEvent compensableEvent);
     
-    public Collection<PayeeAllocation> deriveCompensationForCompensableEvent(Collection<CompensableEvent> compensableEvents); 
+    public Collection<CompensationRecord> deriveCompensationForCompensableEvent(Collection<CompensableEvent> compensableEvents); 
 }

@@ -7,7 +7,7 @@ package com.blazartech.MultiDroolsDemo.compprocess;
 
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
 import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
-import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import com.blazartech.MultiDroolsDemo.comp.process.drools.DroolsCalculationService;
 import java.util.Collection;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ public class CompensationCalculationPABDroolsImpl implements CompensationCalcula
     private DroolsCalculationService calculationService;
     
     @Override
-    public Collection<PayeeAllocation> calculateCompensation(CompensableEvent compensableEvent, EventAllocation eventAllocation) {
+    public Collection<CompensationRecord> calculateCompensation(CompensableEvent compensableEvent, EventAllocation eventAllocation) {
         logger.info("calculating compensation for event allocation " + eventAllocation);
         
         return calculationService.deriveCompensation(eventAllocation);

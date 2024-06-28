@@ -7,7 +7,7 @@ package com.blazartech.MultiDroolsDemo.compprocess;
 
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
 import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
-import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import java.util.Collection;
 
 /**
@@ -16,5 +16,5 @@ import java.util.Collection;
  */
 public interface CompensationCalculationPAB {
     
-    Collection<PayeeAllocation> calculateCompensation(CompensableEvent compensableEvent, EventAllocation eventAllocation);
+    Collection<CompensationRecord> calculateCompensation(CompensableEvent compensableEvent, EventAllocation eventAllocation);
 }

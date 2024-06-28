@@ -5,7 +5,7 @@
  */
 package com.blazartech.MultiDroolsDemo.rate.process.drools;
 
-import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
+import com.blazartech.MultiDroolsDemo.comp.data.Product;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationProgram;
 import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
 
@@ -18,7 +18,7 @@ public class RateDeterminationData {
     private RateTableType rateTable;
     
     private CompensationProgram program;
-    private CompensationProduct product;
+    private Product product;
     private ThresholdType thresholdType;
     
     private double rate;
@@ -39,11 +39,11 @@ public class RateDeterminationData {
         this.program = program;
     }
 
-    public CompensationProduct getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(CompensationProduct product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 

@@ -5,7 +5,7 @@
  */
 package com.blazartech.MultiDroolsDemo.rate.process.drools;
 
-import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
+import com.blazartech.MultiDroolsDemo.comp.data.Product;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationProgram;
 import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
 import com.blazartech.MultiDroolsDemo.rate.data.CompensationRate;
@@ -30,7 +30,7 @@ public class DetermineRateServiceImpl implements DetermineRateService {
     @Qualifier("rateTableSession")
     private Provider<KieSession> rateTableProvider;
     
-    public RateDeterminationData determineCompensationRate(CompensationProgram program, CompensationProduct product, ThresholdType thresholdType) {
+    public RateDeterminationData determineCompensationRate(CompensationProgram program, Product product, ThresholdType thresholdType) {
         RateDeterminationData rateDeterminationData = new RateDeterminationData();
         rateDeterminationData.setProduct(product);
         rateDeterminationData.setProgram(program);
@@ -45,7 +45,7 @@ public class DetermineRateServiceImpl implements DetermineRateService {
     }
 
     @Override
-    public CompensationRate determineRate(CompensationProgram program, CompensationProduct product, ThresholdType thresholdType) {
+    public CompensationRate determineRate(CompensationProgram program, Product product, ThresholdType thresholdType) {
         
         RateDeterminationData rateDetermination = determineCompensationRate(program, product, thresholdType);
         

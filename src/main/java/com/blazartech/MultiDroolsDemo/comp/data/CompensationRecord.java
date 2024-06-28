@@ -12,9 +12,9 @@ import java.math.BigDecimal;
  *
  * @author aar1069
  */
-public class PayeeAllocation implements Serializable, AmountObject {
+public class CompensationRecord implements Serializable, AmountObject {
     
-    public PayeeAllocation(EventAllocation eventAllocation) {
+    public CompensationRecord(EventAllocation eventAllocation) {
         this.eventAllocation = eventAllocation;
     }
     

@@ -9,7 +9,7 @@ package com.blazartech.MultiDroolsDemo.comp.data;
  *
  * @author aar1069
  */
-public enum CompensationProduct {
+public enum Product {
     
     WholeLife, VariableAnnuity;
 }

@@ -6,7 +6,7 @@ package com.blazartech.MultiDroolsDemo;
 
 import com.blazartech.MultiDroolsDemo.comp.data.AmountObject;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
-import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
+import com.blazartech.MultiDroolsDemo.comp.data.Product;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -31,8 +31,8 @@ public abstract class LargeCalcDemoBase {
         for (int i = 0; i < EVENT_COUNT; i++) {
             CompensableEvent compensableEvent = new CompensableEvent();
             compensableEvent.setId(1000 + i);
-            compensableEvent.setProductContractNumber("TEST" + Integer.toString(i));
-            CompensationProduct product = ((i & 0x01) == 0) ? CompensationProduct.VariableAnnuity : CompensationProduct.WholeLife;
+            compensableEvent.setPolicyNumber("TEST" + Integer.toString(i));
+            Product product = ((i & 0x01) == 0) ? Product.VariableAnnuity : Product.WholeLife;
             compensableEvent.setProduct(product);
             compensableEvent.setAmount(new BigDecimal("1000"));
             compensableEvents.add(compensableEvent);

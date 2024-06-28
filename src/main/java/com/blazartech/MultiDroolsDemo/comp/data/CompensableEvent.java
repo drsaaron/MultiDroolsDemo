@@ -15,15 +15,15 @@ import java.math.BigDecimal;
 public class CompensableEvent implements Serializable, AmountObject {
     
     private long id;
-    private String productContractNumber;
+    private String policyNumber;
     private BigDecimal amount;
-    private CompensationProduct product;
+    private Product product;
 
-    public CompensationProduct getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public void setProduct(CompensationProduct product) {
+    public void setProduct(Product product) {
         this.product = product;
     }
 
@@ -35,12 +35,12 @@ public class CompensableEvent implements Serializable, AmountObject {
         this.id = id;
     }
 
-    public String getProductContractNumber() {
-        return productContractNumber;
+    public String getPolicyNumber() {
+        return policyNumber;
     }
 
-    public void setProductContractNumber(String productContractNumber) {
-        this.productContractNumber = productContractNumber;
+    public void setPolicyNumber(String productContractNumber) {
+        this.policyNumber = productContractNumber;
     }
 
     @Override
@@ -55,7 +55,7 @@ public class CompensableEvent implements Serializable, AmountObject {
 
     @Override
     public String toString() {
-        return "CompensableEvent{" + "id=" + id + ", productContractNumber=" + productContractNumber + ", amount=" + amount + ", product=" + product + '}';
+        return "CompensableEvent{" + "id=" + id + ", policyNumber=" + policyNumber + ", amount=" + amount + ", product=" + product + '}';
     }
     
     

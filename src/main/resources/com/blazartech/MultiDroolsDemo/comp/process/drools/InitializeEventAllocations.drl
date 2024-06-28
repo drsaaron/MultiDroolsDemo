@@ -5,9 +5,9 @@ dialect 'mvel';
 dialect 'java';
 
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
-import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
-import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
+import com.blazartech.MultiDroolsDemo.comp.data.Product;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationProgram;
 import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
 
@@ -18,13 +18,13 @@ when
 then
     EventAllocation eventAllocation = new EventAllocation();
     eventAllocation.setCompensableEvent(compensableEvent);
-    eventAllocation.setDistributorNumber("DBS001");
+    eventAllocation.setAgentNumber("DBS001");
     eventAllocation.setId(compensableEvent.getId() * 10);
     eventAllocation.setProgram(CompensationProgram.FYC);
 
     EventAllocation eventAllocation2 = new EventAllocation();
     eventAllocation2.setCompensableEvent(compensableEvent);
-    eventAllocation2.setDistributorNumber("DBS001");
+    eventAllocation2.setAgentNumber("DBS001");
     eventAllocation2.setId(eventAllocation.getId() + 1);
     eventAllocation2.setProgram(CompensationProgram.RenewalCommission);
 

@@ -6,8 +6,8 @@
 package com.blazartech.MultiDroolsDemo;
 
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
-import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
-import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.Product;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import com.blazartech.MultiDroolsDemo.comp.process.drools.DroolsCalculationService;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -35,11 +35,11 @@ public class SimpleCalcDemoCommandLineRunner implements CommandLineRunner {
         
         CompensableEvent compensableEvent = new CompensableEvent();
         compensableEvent.setId(100);
-        compensableEvent.setProductContractNumber("TESTWL");
-        compensableEvent.setProduct(CompensationProduct.VariableAnnuity);
+        compensableEvent.setPolicyNumber("TESTWL");
+        compensableEvent.setProduct(Product.VariableAnnuity);
         compensableEvent.setAmount(new BigDecimal("1000"));
         
-        Collection<PayeeAllocation> compensation = calcService.deriveCompensationForCompensableEvent(compensableEvent);
+        Collection<CompensationRecord> compensation = calcService.deriveCompensationForCompensableEvent(compensableEvent);
         
         compensation.forEach(a -> logger.info("compensation " + a));
     }

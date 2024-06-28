@@ -6,7 +6,7 @@ package com.blazartech.MultiDroolsDemo;
 
 import static com.blazartech.MultiDroolsDemo.LargeCalcDemoBase.EVENT_COUNT;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
-import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import com.blazartech.MultiDroolsDemo.comp.process.drools.DroolsCalculationAsyncService;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -34,11 +34,11 @@ public class LargeCalcParallelCommandLineRunner extends LargeCalcDemoBase implem
     @Autowired
     private DroolsCalculationAsyncService calcService;
 
-    private CompletableFuture<Collection<PayeeAllocation>> calculateCompensation(CompensableEvent event) {
+    private CompletableFuture<Collection<CompensationRecord>> calculateCompensation(CompensableEvent event) {
         return calcService.deriveCompensationForCompensableEvent(event);
     }
 
-    private Collection<PayeeAllocation> getAllocations(Future<Collection<PayeeAllocation>> f) {
+    private Collection<CompensationRecord> getAllocations(Future<Collection<CompensationRecord>> f) {
         try {
             return f.get();
         } catch (InterruptedException | ExecutionException ex) {
@@ -54,11 +54,11 @@ public class LargeCalcParallelCommandLineRunner extends LargeCalcDemoBase implem
         clock.start("parallel");
 
         Collection<CompensableEvent> compensableEvents = createCompensableEvents();
-        Collection<Future<Collection<PayeeAllocation>>> calcFutures = compensableEvents.stream()
+        Collection<Future<Collection<CompensationRecord>>> calcFutures = compensableEvents.stream()
                 .map(e -> calculateCompensation(e))
                 .collect(Collectors.toList());
 
-        Collection<PayeeAllocation> compensation = calcFutures.stream()
+        Collection<CompensationRecord> compensation = calcFutures.stream()
                 .map(f -> getAllocations(f))
                 .flatMap(c -> c.stream())
                 .collect(Collectors.toList());

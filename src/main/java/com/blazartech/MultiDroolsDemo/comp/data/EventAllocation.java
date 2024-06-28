@@ -14,7 +14,7 @@ import java.io.Serializable;
 public class EventAllocation implements Serializable {
     
     private long id;
-    private String distributorNumber;
+    private String agentNumber;
     private CompensationProgram program;
     private CompensableEvent compensableEvent;
     private boolean eligibleToCalc = false;
@@ -35,12 +35,12 @@ public class EventAllocation implements Serializable {
         this.id = id;
     }
 
-    public String getDistributorNumber() {
-        return distributorNumber;
+    public String getAgentNumber() {
+        return agentNumber;
     }
 
-    public void setDistributorNumber(String distributorNumber) {
-        this.distributorNumber = distributorNumber;
+    public void setAgentNumber(String distributorNumber) {
+        this.agentNumber = distributorNumber;
     }
 
     public CompensationProgram getProgram() {
@@ -61,7 +61,7 @@ public class EventAllocation implements Serializable {
 
     @Override
     public String toString() {
-        return "EventAllocation{" + "id=" + id + ", distributorNumber=" + distributorNumber + ", program=" + program + ", compensableEvent=" + compensableEvent + ", eligibleToCalc=" + eligibleToCalc + '}';
+        return "EventAllocation{" + "id=" + id + ", agentNumber=" + agentNumber + ", program=" + program + ", compensableEvent=" + compensableEvent + ", eligibleToCalc=" + eligibleToCalc + '}';
     }
     
     

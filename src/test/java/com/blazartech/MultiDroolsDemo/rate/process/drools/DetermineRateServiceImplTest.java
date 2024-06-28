@@ -5,7 +5,7 @@
  */
 package com.blazartech.MultiDroolsDemo.rate.process.drools;
 
-import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
+import com.blazartech.MultiDroolsDemo.comp.data.Product;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationProgram;
 import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
 import com.blazartech.MultiDroolsDemo.comp.process.drools.ObjectAddUpdateEventListener;
@@ -90,7 +90,7 @@ public class DetermineRateServiceImplTest {
         logger.info("determineRateTable");
         
         CompensationProgram program = CompensationProgram.FYC;
-        CompensationProduct product = CompensationProduct.WholeLife;
+        Product product = Product.WholeLife;
         ThresholdType thresholdType = ThresholdType.Below;
 
         RateDeterminationData result = instance.determineCompensationRate(program, product, thresholdType);
@@ -105,7 +105,7 @@ public class DetermineRateServiceImplTest {
         logger.info("determineRateTable_annuityThreshold");
         
         CompensationProgram program = CompensationProgram.FYC;
-        CompensationProduct product = CompensationProduct.VariableAnnuity;
+        Product product = Product.VariableAnnuity;
         ThresholdType thresholdType = ThresholdType.Below;
 
         RateDeterminationData result = instance.determineCompensationRate(program, product, thresholdType);
@@ -120,7 +120,7 @@ public class DetermineRateServiceImplTest {
         logger.info("determineRateTable_annuityThreshold");
         
         CompensationProgram program = CompensationProgram.RenewalCommission;
-        CompensationProduct product = CompensationProduct.VariableAnnuity;
+        Product product = Product.VariableAnnuity;
         ThresholdType thresholdType = ThresholdType.Below;
 
         RateDeterminationData result = instance.determineCompensationRate(program, product, thresholdType);
@@ -138,7 +138,7 @@ public class DetermineRateServiceImplTest {
         logger.info("determineRate");
         
         CompensationProgram program = CompensationProgram.FYC;
-        CompensationProduct product = CompensationProduct.WholeLife;
+        Product product = Product.WholeLife;
         ThresholdType thresholdType = ThresholdType.Below;
 
         CompensationRate result = instance.determineRate(program, product, thresholdType);

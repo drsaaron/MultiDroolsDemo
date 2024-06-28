@@ -5,7 +5,7 @@
 package com.blazartech.MultiDroolsDemo.comp.process.drools;
 
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
-import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import java.util.Collection;
 import java.util.concurrent.CompletableFuture;
 
@@ -15,5 +15,5 @@ import java.util.concurrent.CompletableFuture;
  */
 public interface DroolsCalculationAsyncService {
     
-    public CompletableFuture<Collection<PayeeAllocation>> deriveCompensationForCompensableEvent(CompensableEvent compensableEvent);
+    public CompletableFuture<Collection<CompensationRecord>> deriveCompensationForCompensableEvent(CompensableEvent compensableEvent);
 }

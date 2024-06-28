@@ -6,10 +6,10 @@
 package com.blazartech.MultiDroolsDemo.comp.process.drools;
 
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
-import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
+import com.blazartech.MultiDroolsDemo.comp.data.Product;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationProgram;
 import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
-import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -98,21 +98,21 @@ public class DroolsCalculationServiceImplTest {
         
         CompensableEvent compensableEvent = new CompensableEvent();
         compensableEvent.setId(100);
-        compensableEvent.setProductContractNumber("TESTWL");
-        compensableEvent.setProduct(CompensationProduct.WholeLife);
+        compensableEvent.setPolicyNumber("TESTWL");
+        compensableEvent.setProduct(Product.WholeLife);
         compensableEvent.setAmount(new BigDecimal("1000"));
         
         EventAllocation eventAllocation = new EventAllocation();
         eventAllocation.setCompensableEvent(compensableEvent);
-        eventAllocation.setDistributorNumber("DBS001");
+        eventAllocation.setAgentNumber("DBS001");
         eventAllocation.setId(1000);
         eventAllocation.setProgram(CompensationProgram.FYC);
         
-        Collection<PayeeAllocation> result = instance.deriveCompensation(eventAllocation);
+        Collection<CompensationRecord> result = instance.deriveCompensation(eventAllocation);
         assertNotNull(result);
         assertEquals(1, result.size());
         
-        PayeeAllocation payeeAllocation = result.iterator().next();
+        CompensationRecord payeeAllocation = result.iterator().next();
         assertEquals(0.5, payeeAllocation.getCompensationRate(), 0.01);
         
         assertNotNull(payeeAllocation.getAmount());
@@ -125,21 +125,21 @@ public class DroolsCalculationServiceImplTest {
         
         CompensableEvent compensableEvent = new CompensableEvent();
         compensableEvent.setId(100);
-        compensableEvent.setProductContractNumber("TESTWL");
-        compensableEvent.setProduct(CompensationProduct.WholeLife);
+        compensableEvent.setPolicyNumber("TESTWL");
+        compensableEvent.setProduct(Product.WholeLife);
         compensableEvent.setAmount(new BigDecimal("1000"));
         
         EventAllocation eventAllocation = new EventAllocation();
         eventAllocation.setCompensableEvent(compensableEvent);
-        eventAllocation.setDistributorNumber("DBS001");
+        eventAllocation.setAgentNumber("DBS001");
         eventAllocation.setId(1000);
         eventAllocation.setProgram(CompensationProgram.RenewalCommission);
         
-        Collection<PayeeAllocation> result = instance.deriveCompensation(eventAllocation);
+        Collection<CompensationRecord> result = instance.deriveCompensation(eventAllocation);
         assertNotNull(result);
         assertEquals(1, result.size());
         
-        PayeeAllocation payeeAllocation = result.iterator().next();
+        CompensationRecord payeeAllocation = result.iterator().next();
         assertEquals(0.05, payeeAllocation.getCompensationRate(), 0.01);
         
         assertNotNull(payeeAllocation.getAmount());
@@ -152,21 +152,21 @@ public class DroolsCalculationServiceImplTest {
         
         CompensableEvent compensableEvent = new CompensableEvent();
         compensableEvent.setId(100);
-        compensableEvent.setProductContractNumber("TESTWL");
-        compensableEvent.setProduct(CompensationProduct.VariableAnnuity);
+        compensableEvent.setPolicyNumber("TESTWL");
+        compensableEvent.setProduct(Product.VariableAnnuity);
         compensableEvent.setAmount(new BigDecimal("1000"));
         
         EventAllocation eventAllocation = new EventAllocation();
         eventAllocation.setCompensableEvent(compensableEvent);
-        eventAllocation.setDistributorNumber("DBS001");
+        eventAllocation.setAgentNumber("DBS001");
         eventAllocation.setId(1000);
         eventAllocation.setProgram(CompensationProgram.FYC);
         
-        Collection<PayeeAllocation> result = instance.deriveCompensation(eventAllocation);
+        Collection<CompensationRecord> result = instance.deriveCompensation(eventAllocation);
         assertNotNull(result);
         assertEquals(2, result.size());
         
-        PayeeAllocation payeeAllocation = result.iterator().next();
+        CompensationRecord payeeAllocation = result.iterator().next();
         assertEquals(0.1, payeeAllocation.getCompensationRate(), 0.01);
         
         assertNotNull(payeeAllocation.getAmount());
@@ -179,21 +179,21 @@ public class DroolsCalculationServiceImplTest {
         
         CompensableEvent compensableEvent = new CompensableEvent();
         compensableEvent.setId(100);
-        compensableEvent.setProductContractNumber("TESTWL");
-        compensableEvent.setProduct(CompensationProduct.VariableAnnuity);
+        compensableEvent.setPolicyNumber("TESTWL");
+        compensableEvent.setProduct(Product.VariableAnnuity);
         compensableEvent.setAmount(new BigDecimal("1000"));
         
         EventAllocation eventAllocation = new EventAllocation();
         eventAllocation.setCompensableEvent(compensableEvent);
-        eventAllocation.setDistributorNumber("DBS001");
+        eventAllocation.setAgentNumber("DBS001");
         eventAllocation.setId(1000);
         eventAllocation.setProgram(CompensationProgram.RenewalCommission);
         
-        Collection<PayeeAllocation> result = instance.deriveCompensation(eventAllocation);
+        Collection<CompensationRecord> result = instance.deriveCompensation(eventAllocation);
         assertNotNull(result);
         assertEquals(1, result.size());
         
-        PayeeAllocation payeeAllocation = result.iterator().next();
+        CompensationRecord payeeAllocation = result.iterator().next();
         assertEquals(0.01, payeeAllocation.getCompensationRate(), 0.01);
         
         assertNotNull(payeeAllocation.getAmount());
@@ -206,43 +206,43 @@ public class DroolsCalculationServiceImplTest {
         
         CompensableEvent compensableEvent1 = new CompensableEvent();
         compensableEvent1.setId(1001);
-        compensableEvent1.setProductContractNumber("TESTWL");
-        compensableEvent1.setProduct(CompensationProduct.VariableAnnuity);
+        compensableEvent1.setPolicyNumber("TESTWL");
+        compensableEvent1.setProduct(Product.VariableAnnuity);
         compensableEvent1.setAmount(new BigDecimal("1000"));
         
         EventAllocation eventAllocation1 = new EventAllocation();
         eventAllocation1.setCompensableEvent(compensableEvent1);
-        eventAllocation1.setDistributorNumber("DBS001");
+        eventAllocation1.setAgentNumber("DBS001");
         eventAllocation1.setId(10001);
         eventAllocation1.setProgram(CompensationProgram.RenewalCommission);
         
         CompensableEvent compensableEvent2 = new CompensableEvent();
         compensableEvent2.setId(1002);
-        compensableEvent2.setProductContractNumber("TESTWL");
-        compensableEvent2.setProduct(CompensationProduct.VariableAnnuity);
+        compensableEvent2.setPolicyNumber("TESTWL");
+        compensableEvent2.setProduct(Product.VariableAnnuity);
         compensableEvent2.setAmount(new BigDecimal("1000"));
         
         EventAllocation eventAllocation2 = new EventAllocation();
         eventAllocation2.setCompensableEvent(compensableEvent2);
-        eventAllocation2.setDistributorNumber("DBS001");
+        eventAllocation2.setAgentNumber("DBS001");
         eventAllocation2.setId(10002);
         eventAllocation2.setProgram(CompensationProgram.FYC);
         
         CompensableEvent compensableEvent3 = new CompensableEvent();
         compensableEvent3.setId(1003);
-        compensableEvent3.setProductContractNumber("TESTWL");
-        compensableEvent3.setProduct(CompensationProduct.WholeLife);
+        compensableEvent3.setPolicyNumber("TESTWL");
+        compensableEvent3.setProduct(Product.WholeLife);
         compensableEvent3.setAmount(new BigDecimal("1000"));
         
         EventAllocation eventAllocation3 = new EventAllocation();
         eventAllocation3.setCompensableEvent(compensableEvent3);
-        eventAllocation3.setDistributorNumber("DBS001");
+        eventAllocation3.setAgentNumber("DBS001");
         eventAllocation3.setId(10003);
         eventAllocation3.setProgram(CompensationProgram.FYC);
         
         List<EventAllocation> eventAllocations = List.of(eventAllocation1, eventAllocation2, eventAllocation3);
         
-        Collection<PayeeAllocation> result = instance.deriveCompensation(eventAllocations);
+        Collection<CompensationRecord> result = instance.deriveCompensation(eventAllocations);
         assertNotNull(result);
         
         // there should be 4 comp results
@@ -256,7 +256,7 @@ public class DroolsCalculationServiceImplTest {
         assertEquals(3, paidCompensableEvents.size());
         
         // check the annuity FYC ones.  There should be 2
-        Predicate<PayeeAllocation> testFilter = a -> a.getEventAllocation().getCompensableEvent().getId() == compensableEvent2.getId();
+        Predicate<CompensationRecord> testFilter = a -> a.getEventAllocation().getCompensableEvent().getId() == compensableEvent2.getId();
         long annuityFYCAllocationCount = result.stream()
                 .filter(testFilter)
                 .collect(Collectors.counting());
@@ -282,19 +282,19 @@ public class DroolsCalculationServiceImplTest {
         
         CompensableEvent compensableEvent = new CompensableEvent();
         compensableEvent.setId(100);
-        compensableEvent.setProductContractNumber("TESTWL");
-        compensableEvent.setProduct(CompensationProduct.WholeLife);
+        compensableEvent.setPolicyNumber("TESTWL");
+        compensableEvent.setProduct(Product.WholeLife);
         compensableEvent.setAmount(new BigDecimal("1000"));
                 
-        Collection<PayeeAllocation> result = instance.deriveCompensationForCompensableEvent(compensableEvent);
+        Collection<CompensationRecord> result = instance.deriveCompensationForCompensableEvent(compensableEvent);
         assertNotNull(result);
         
         // there should be two compensation events, one fyc and one renewal.
         assertEquals(2, result.size());
         
         // check the fyc record.
-        PayeeAllocation fycAllocation = null;
-        for (PayeeAllocation a : result) {
+        CompensationRecord fycAllocation = null;
+        for (CompensationRecord a : result) {
             if (a.getEventAllocation().getProgram() == CompensationProgram.FYC) {
                 fycAllocation = a;
                 break;
@@ -313,19 +313,19 @@ public class DroolsCalculationServiceImplTest {
         
         CompensableEvent compensableEvent1 = new CompensableEvent();
         compensableEvent1.setId(100);
-        compensableEvent1.setProductContractNumber("TESTWL");
-        compensableEvent1.setProduct(CompensationProduct.WholeLife);
+        compensableEvent1.setPolicyNumber("TESTWL");
+        compensableEvent1.setProduct(Product.WholeLife);
         compensableEvent1.setAmount(new BigDecimal("1000"));
         
         CompensableEvent compensableEvent2 = new CompensableEvent();
         compensableEvent2.setId(1002);
-        compensableEvent2.setProductContractNumber("TESTWL");
-        compensableEvent2.setProduct(CompensationProduct.VariableAnnuity);
+        compensableEvent2.setPolicyNumber("TESTWL");
+        compensableEvent2.setProduct(Product.VariableAnnuity);
         compensableEvent2.setAmount(new BigDecimal("1000"));
         
         List<CompensableEvent> compensableEvents = List.of(compensableEvent1, compensableEvent2);
                 
-        Collection<PayeeAllocation> result = instance.deriveCompensationForCompensableEvent(compensableEvents);
+        Collection<CompensationRecord> result = instance.deriveCompensationForCompensableEvent(compensableEvents);
         assertNotNull(result);
         
         // there should be 5 compensation events, fyc and renewal for the whole life, 
@@ -333,9 +333,9 @@ public class DroolsCalculationServiceImplTest {
         assertEquals(5, result.size());
         
         // check the fyc record.
-        PayeeAllocation fycAllocation = null;
-        for (PayeeAllocation a : result) {
-            if (a.getEventAllocation().getProgram() == CompensationProgram.FYC && a.getEventAllocation().getCompensableEvent().getProduct() == CompensationProduct.WholeLife) {
+        CompensationRecord fycAllocation = null;
+        for (CompensationRecord a : result) {
+            if (a.getEventAllocation().getProgram() == CompensationProgram.FYC && a.getEventAllocation().getCompensableEvent().getProduct() == Product.WholeLife) {
                 fycAllocation = a;
                 break;
             }

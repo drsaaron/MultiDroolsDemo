@@ -3,51 +3,51 @@ package com.blazartech.MultiDroolsDemo.comp.process.drools;
 dialect 'mvel';
 dialect 'java';
 
-import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
-import com.blazartech.MultiDroolsDemo.comp.data.CompensationProduct;
+import com.blazartech.MultiDroolsDemo.comp.data.Product;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationProgram;
 import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
 
 // initialize the payee allocations and set the compensation rates for payable transactions
 rule 'Determine compensation rate, whole life, FYC'
 when
-    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == CompensationProduct.WholeLife && program == CompensationProgram.FYC)
+    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == Product.WholeLife && program == CompensationProgram.FYC)
 then   
-    PayeeAllocation payeeAllocation = new PayeeAllocation(eventAllocation);
-    payeeAllocation.setThresholdType(ThresholdType.Below);
-    insert(payeeAllocation);
+    CompensationRecord compensationRecord = new CompensationRecord(eventAllocation);
+    compensationRecord.setThresholdType(ThresholdType.Below);
+    insert(compensationRecord);
 end
 
 rule 'Determine compensation rate, whole life, Renewal'
 when
-    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == CompensationProduct.WholeLife && program == CompensationProgram.RenewalCommission)
+    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == Product.WholeLife && program == CompensationProgram.RenewalCommission)
 then   
-    PayeeAllocation payeeAllocation = new PayeeAllocation(eventAllocation);
-    payeeAllocation.setThresholdType(ThresholdType.Below);
-    insert(payeeAllocation);
+    CompensationRecord compensationRecord = new CompensationRecord(eventAllocation);
+    compensationRecord.setThresholdType(ThresholdType.Below);
+    insert(compensationRecord);
 end
 
 rule 'Determine compensation rate, annuity, FYC'
 when
-    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == CompensationProduct.VariableAnnuity && program == CompensationProgram.FYC)
+    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == Product.VariableAnnuity && program == CompensationProgram.FYC)
 then   
-    PayeeAllocation payeeAllocation = new PayeeAllocation(eventAllocation);
-    payeeAllocation.setThresholdType(ThresholdType.Below);    
+    CompensationRecord compensationRecord = new CompensationRecord(eventAllocation);
+    compensationRecord.setThresholdType(ThresholdType.Below);    
 
-    PayeeAllocation payeeAllocation2 = new PayeeAllocation(eventAllocation);
-    payeeAllocation2.setThresholdType(ThresholdType.Above);    
+    CompensationRecord compensationRecord2 = new CompensationRecord(eventAllocation);
+    compensationRecord2.setThresholdType(ThresholdType.Above);    
 
-    insert(payeeAllocation);
-    insert(payeeAllocation2);
+    insert(compensationRecord);
+    insert(compensationRecord2);
 end
 
 rule 'Determine compensation rate, annuity, Renewal'
 when
-    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == CompensationProduct.VariableAnnuity && program == CompensationProgram.RenewalCommission)
+    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == Product.VariableAnnuity && program == CompensationProgram.RenewalCommission)
 then   
-    PayeeAllocation payeeAllocation = new PayeeAllocation(eventAllocation);
-    payeeAllocation.setThresholdType(ThresholdType.Below);  
-    insert(payeeAllocation);
+    CompensationRecord compensationRecord = new CompensationRecord(eventAllocation);
+    compensationRecord.setThresholdType(ThresholdType.Below);  
+    insert(compensationRecord);
 end
 

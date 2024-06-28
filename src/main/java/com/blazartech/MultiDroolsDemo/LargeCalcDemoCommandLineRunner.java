@@ -6,7 +6,7 @@
 package com.blazartech.MultiDroolsDemo;
 
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
-import com.blazartech.MultiDroolsDemo.comp.data.PayeeAllocation;
+import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import com.blazartech.MultiDroolsDemo.comp.process.drools.DroolsCalculationService;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -39,7 +39,7 @@ public class LargeCalcDemoCommandLineRunner extends LargeCalcDemoBase implements
 
         Collection<CompensableEvent> compensableEvents = createCompensableEvents();
         
-        Collection<PayeeAllocation> compensation = calcService.deriveCompensationForCompensableEvent(compensableEvents);
+        Collection<CompensationRecord> compensation = calcService.deriveCompensationForCompensableEvent(compensableEvents);
         
         logger.info("calculated " + compensation.size() + " comp records");
         
