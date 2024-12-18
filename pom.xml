@@ -5,7 +5,7 @@
 
     <groupId>com.blazartech</groupId>
     <artifactId>MultiDroolsDemo</artifactId>
-    <version>0.0.23-SNAPSHOT</version>
+    <version>0.0.24-SNAPSHOT</version>
     <name>MultiDroolsDemo</name>
         
     <parent>
@@ -60,18 +60,17 @@
             <artifactId>junit-vintage-engine</artifactId>
             <scope>test</scope>
         </dependency>
-
                 
         <!-- spring drools integration -->
         <dependency>
             <groupId>org.kie</groupId>
             <artifactId>kie-ci</artifactId>
-            <version>9.44.0.Final</version>
+            <version>10.0.0</version>
         </dependency>
         <dependency>
             <groupId>org.drools</groupId>
             <artifactId>drools-decisiontables</artifactId>
-            <version>9.44.0.Final</version>
+            <version>10.0.0</version>
         </dependency>
         
         <!-- provider -->

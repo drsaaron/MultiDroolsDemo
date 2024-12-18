@@ -12,7 +12,7 @@ import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
 // calculate the compensation on all created allocations
 rule 'calculate compensation'
 when
-    compensationRecord: CompensationRecord(amount == null, compensationRecord.compensationRate > 0)
+    compensationRecord: CompensationRecord(amount == null, compensationRate > 0)
 then
     compensationRecord.amount = compensationRecord.eventAllocation.compensableEvent.amount * compensationRecord.compensationRate;
     update(compensationRecord);
