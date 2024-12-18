@@ -73,6 +73,18 @@
             <version>10.0.0</version>
         </dependency>
         
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-mvel</artifactId>
+            <version>10.0.0</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.drools</groupId>
+            <artifactId>drools-mvel-compiler</artifactId>
+            <version>10.0.0</version>
+        </dependency>
+        
         <!-- provider -->
         <dependency>
             <groupId>jakarta.inject</groupId>
@@ -88,13 +100,13 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-	    <plugin>
-	      <groupId>org.codehaus.mojo</groupId>
-	      <artifactId>versions-maven-plugin</artifactId>
-	      <configuration>
-		<rulesUri>file:versionUpdateExclude.xml</rulesUri>
-	      </configuration>
-	    </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <configuration>
+                    <rulesUri>file:versionUpdateExclude.xml</rulesUri>
+                </configuration>
+            </plugin>
             
         </plugins>
     </build>
