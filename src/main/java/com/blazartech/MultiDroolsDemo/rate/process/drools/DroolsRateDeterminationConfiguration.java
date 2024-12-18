@@ -103,7 +103,7 @@ public class DroolsRateDeterminationConfiguration {
         };
 
         String drl = decisionTableProvider.loadFromResource(dt, providerConfig);
-        logger.debug("drl for determine rate: " + drl);
+        logger.info("drl for determine rate: " + drl);
     }
     
     @Bean("rateTableContainer")

@@ -1,6 +1,5 @@
 package com.blazartech.MultiDroolsDemo.comp.process.drools;
 
-dialect 'mvel';
 dialect 'java';
 
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
@@ -8,12 +7,13 @@ import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
 import com.blazartech.MultiDroolsDemo.comp.data.Product;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationProgram;
 import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
+import java.math.BigDecimal;
 
 // calculate the compensation on all created allocations
 rule 'calculate compensation'
 when
     compensationRecord: CompensationRecord(amount == null, compensationRate > 0)
 then
-    compensationRecord.amount = compensationRecord.eventAllocation.compensableEvent.amount * compensationRecord.compensationRate;
+    compensationRecord.setAmount(compensationRecord.getEventAllocation().getCompensableEvent().getAmount().multiply(BigDecimal.valueOf(compensationRecord.getCompensationRate())));
     update(compensationRecord);
 end
