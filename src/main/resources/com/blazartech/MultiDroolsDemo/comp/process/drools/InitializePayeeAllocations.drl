@@ -9,7 +9,7 @@ import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
 // initialize the payee allocations and set the compensation rates for payable transactions
 rule 'Determine compensation rate, whole life, FYC'
 when
-    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == Product.WholeLife && program == CompensationProgram.FYC)
+    eventAllocation: EventAllocation(isEligibleToCalc() == true && getCompensableEvent().getProduct() == Product.WholeLife && getProgram() == CompensationProgram.FYC)
 then   
     CompensationRecord compensationRecord = new CompensationRecord(eventAllocation);
     compensationRecord.setThresholdType(ThresholdType.Below);
@@ -18,7 +18,7 @@ end
 
 rule 'Determine compensation rate, whole life, Renewal'
 when
-    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == Product.WholeLife && program == CompensationProgram.RenewalCommission)
+    eventAllocation: EventAllocation(isEligibleToCalc() == true && getCompensableEvent().getProduct() == Product.WholeLife && getProgram() == CompensationProgram.RenewalCommission)
 then   
     CompensationRecord compensationRecord = new CompensationRecord(eventAllocation);
     compensationRecord.setThresholdType(ThresholdType.Below);
@@ -27,7 +27,7 @@ end
 
 rule 'Determine compensation rate, annuity, FYC'
 when
-    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == Product.VariableAnnuity && program == CompensationProgram.FYC)
+    eventAllocation: EventAllocation(isEligibleToCalc() == true && getCompensableEvent().getProduct() == Product.VariableAnnuity && getProgram() == CompensationProgram.FYC)
 then   
     CompensationRecord compensationRecord = new CompensationRecord(eventAllocation);
     compensationRecord.setThresholdType(ThresholdType.Below);    
@@ -41,7 +41,7 @@ end
 
 rule 'Determine compensation rate, annuity, Renewal'
 when
-    eventAllocation: EventAllocation(eligibleToCalc == true && compensableEvent.product == Product.VariableAnnuity && program == CompensationProgram.RenewalCommission)
+    eventAllocation: EventAllocation(isEligibleToCalc() == true && getCompensableEvent().getProduct() == Product.VariableAnnuity && getProgram() == CompensationProgram.RenewalCommission)
 then   
     CompensationRecord compensationRecord = new CompensationRecord(eventAllocation);
     compensationRecord.setThresholdType(ThresholdType.Below);  
