@@ -1,7 +1,5 @@
 package com.blazartech.MultiDroolsDemo.comp.process.drools;
 
-dialect 'java';
-
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
 import com.blazartech.MultiDroolsDemo.comp.data.Product;
@@ -11,7 +9,7 @@ import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
 // determine if a transaction is eligible to calc
 rule 'Determine isPayable'
 when
-    eventAllocation: EventAllocation(program != null)
+    eventAllocation: EventAllocation(getProgram() != null)
 then
     eventAllocation.setEligibleToCalc(true);
     update(eventAllocation);

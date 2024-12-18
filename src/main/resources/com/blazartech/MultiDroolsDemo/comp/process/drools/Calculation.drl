@@ -1,7 +1,5 @@
 package com.blazartech.MultiDroolsDemo.comp.process.drools;
 
-dialect 'java';
-
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
 import com.blazartech.MultiDroolsDemo.comp.data.Product;
@@ -12,8 +10,8 @@ import java.math.BigDecimal;
 // calculate the compensation on all created allocations
 rule 'calculate compensation'
 when
-    compensationRecord: CompensationRecord(amount == null, compensationRate > 0)
+    $compensationRecord: CompensationRecord(getAmount() == null, getCompensationRate() > 0)
 then
-    compensationRecord.setAmount(compensationRecord.getEventAllocation().getCompensableEvent().getAmount().multiply(BigDecimal.valueOf(compensationRecord.getCompensationRate())));
-    update(compensationRecord);
+    $compensationRecord.setAmount($compensationRecord.getEventAllocation().getCompensableEvent().getAmount().multiply(BigDecimal.valueOf($compensationRecord.getCompensationRate())));
+    update($compensationRecord);
 end

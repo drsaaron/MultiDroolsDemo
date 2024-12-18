@@ -1,8 +1,6 @@
 
 package com.blazartech.MultiDroolsDemo.comp.process.drools;
 
-dialect 'java';
-
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
 import com.blazartech.MultiDroolsDemo.comp.data.EventAllocation;
