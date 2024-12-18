@@ -9,9 +9,9 @@ import com.blazartech.MultiDroolsDemo.comp.data.ThresholdType;
 // determine if a transaction is eligible to calc
 rule 'Determine isPayable'
 when
-    eventAllocation: EventAllocation(getProgram() != null)
+    $eventAllocation: EventAllocation(getProgram() != null)
 then
-    eventAllocation.setEligibleToCalc(true);
-    update(eventAllocation);
+    $eventAllocation.setEligibleToCalc(true);
+    update($eventAllocation);
 end
 
