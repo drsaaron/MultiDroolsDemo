@@ -1,6 +1,5 @@
 package com.blazartech.MultiDroolsDemo.comp.process.drools;
 
-dialect 'mvel';
 dialect 'java';
 
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
