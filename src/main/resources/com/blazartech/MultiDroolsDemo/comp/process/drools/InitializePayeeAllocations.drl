@@ -16,16 +16,16 @@ then
     insert(compensationRecord);
 end
 
-/*rule 'Determine compensation rate, whole life, Renewal'
+rule 'Determine compensation rate, whole life, Renewal'
 when
     eventAllocation: EventAllocation(eligibleToCalc == true, compensableEvent.product == Product.WholeLife, program == CompensationProgram.RenewalCommission)
 then   
     CompensationRecord compensationRecord = new CompensationRecord(eventAllocation);
     compensationRecord.setThresholdType(ThresholdType.Below);
     insert(compensationRecord);
-end */
+end 
 
-/*rule 'Determine compensation rate, annuity, FYC'
+rule 'Determine compensation rate, annuity, FYC'
 when
     eventAllocation: EventAllocation(eligibleToCalc == true, compensableEvent.product == Product.VariableAnnuity, program == CompensationProgram.FYC)
 then   
@@ -37,9 +37,9 @@ then
 
     insert(compensationRecord);
     insert(compensationRecord2);
-end  */
+end  
 
-/*rule 'Determine compensation rate, annuity, Renewal'
+rule 'Determine compensation rate, annuity, Renewal'
 when
     eventAllocation: EventAllocation(eligibleToCalc == true, compensableEvent.product == Product.VariableAnnuity, program == CompensationProgram.RenewalCommission)
 then   
@@ -48,4 +48,3 @@ then
     insert(compensationRecord);
 end
 
-*/
