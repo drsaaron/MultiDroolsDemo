@@ -44,7 +44,7 @@ public class TrackingAgendaEventListener extends DefaultAgendaEventListener {
             });
         }
 
-        log.info(sb.toString());
+        log.debug(sb.toString());
     }
 
     public boolean isRuleFired(String ruleName) {

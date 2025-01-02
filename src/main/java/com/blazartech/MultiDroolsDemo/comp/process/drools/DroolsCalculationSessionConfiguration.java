@@ -7,6 +7,7 @@ package com.blazartech.MultiDroolsDemo.comp.process.drools;
 
 import java.util.List;
 import java.util.Properties;
+import java.util.stream.Stream;
 import org.drools.decisiontable.DecisionTableProviderImpl;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
@@ -41,13 +42,19 @@ public class DroolsCalculationSessionConfiguration {
     
     private static final Logger logger = LoggerFactory.getLogger(DroolsCalculationSessionConfiguration.class);
     
-    private static final String CALCULATION_FILE = "Calculation.drl.xlsx";
-    private static final String ELIG_CALC_FILE = "EligibleToCalc.drl.xlsx";
-    private static final String INIT_ALLOCATIONS_FILE = "InitializePayeeAllocations.drl.xlsx";
-    private static final String INIT_EVENT_ALLOCATION_FILE = "InitializeEventAllocations.drl.xlsx";
+    private static final String CALCULATION_FILE = "Calculation.drl";
+    private static final String ELIG_CALC_FILE = "EligibleToCalc.drl";
+    private static final String INIT_ALLOCATIONS_FILE = "InitializePayeeAllocations.drl";
+    private static final String INIT_EVENT_ALLOCATION_FILE = "InitializeEventAllocations.drl";
     private static final String DETERMINE_RATE_FILE = "DetermineCompensationRate.drl.xlsx";
     
-    private static final String[] DRL_FILES = { ELIG_CALC_FILE, CALCULATION_FILE, INIT_ALLOCATIONS_FILE, INIT_EVENT_ALLOCATION_FILE, DETERMINE_RATE_FILE };
+    private static final String[] DRL_FILES = { 
+        ELIG_CALC_FILE, 
+        CALCULATION_FILE, 
+        INIT_ALLOCATIONS_FILE, 
+        INIT_EVENT_ALLOCATION_FILE, 
+        DETERMINE_RATE_FILE 
+    };
  
     private void logRules(String fileName) {
         Resource dt = ResourceFactory.newClassPathResource(getClass().getPackage().getName().replace('.', '/') + "/" + fileName);
