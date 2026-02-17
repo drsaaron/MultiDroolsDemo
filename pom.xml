@@ -5,13 +5,13 @@
 
     <groupId>com.blazartech</groupId>
     <artifactId>MultiDroolsDemo</artifactId>
-    <version>0.0.39-SNAPSHOT</version>
+    <version>0.0.40-SNAPSHOT</version>
     <name>MultiDroolsDemo</name>
         
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>4.0.0</version>
+        <version>4.1.0-M1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
         
