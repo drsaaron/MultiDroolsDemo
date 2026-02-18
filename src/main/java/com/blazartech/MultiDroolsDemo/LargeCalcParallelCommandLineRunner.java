@@ -7,13 +7,10 @@ package com.blazartech.MultiDroolsDemo;
 import static com.blazartech.MultiDroolsDemo.LargeCalcDemoBase.EVENT_COUNT;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensableEvent;
 import com.blazartech.MultiDroolsDemo.comp.data.CompensationRecord;
-import com.blazartech.MultiDroolsDemo.comp.process.drools.DroolsCalculationAsyncService;
+import com.blazartech.MultiDroolsDemo.comp.process.drools.DroolsCalculationService;
 import java.math.BigDecimal;
 import java.text.NumberFormat;
 import java.util.Collection;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,20 +27,12 @@ import org.springframework.util.StopWatch;
 public class LargeCalcParallelCommandLineRunner extends LargeCalcDemoBase implements CommandLineRunner {
 
     private static final Logger logger = LoggerFactory.getLogger(LargeCalcParallelCommandLineRunner.class);
-
+    
     @Autowired
-    private DroolsCalculationAsyncService calcService;
+    private DroolsCalculationService calcService;
 
-    private CompletableFuture<Collection<CompensationRecord>> calculateCompensation(CompensableEvent event) {
+    private Collection<CompensationRecord> calculateCompensation(CompensableEvent event) {
         return calcService.deriveCompensationForCompensableEvent(event);
-    }
-
-    private Collection<CompensationRecord> getAllocations(Future<Collection<CompensationRecord>> f) {
-        try {
-            return f.get();
-        } catch (InterruptedException | ExecutionException ex) {
-            throw new RuntimeException("error getting allocations: " + ex.getMessage(), ex);
-        }
     }
 
     @Override
@@ -54,12 +43,8 @@ public class LargeCalcParallelCommandLineRunner extends LargeCalcDemoBase implem
         clock.start("parallel");
 
         Collection<CompensableEvent> compensableEvents = createCompensableEvents();
-        Collection<Future<Collection<CompensationRecord>>> calcFutures = compensableEvents.stream()
+        Collection<CompensationRecord> compensation = compensableEvents.parallelStream() // run the calculations in parallel
                 .map(e -> calculateCompensation(e))
-                .collect(Collectors.toList());
-
-        Collection<CompensationRecord> compensation = calcFutures.stream()
-                .map(f -> getAllocations(f))
                 .flatMap(c -> c.stream())
                 .collect(Collectors.toList());
 
