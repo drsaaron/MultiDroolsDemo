@@ -7,7 +7,6 @@ package com.blazartech.MultiDroolsDemo.comp.process.drools;
 
 import java.util.List;
 import java.util.Properties;
-import java.util.stream.Stream;
 import org.drools.decisiontable.DecisionTableProviderImpl;
 import org.kie.api.KieServices;
 import org.kie.api.builder.KieBuilder;
