@@ -7,5 +7,6 @@
   <ignoreVersions>
     <ignoreVersion type="regex">.*Beta</ignoreVersion>
     <ignoreVersion type="regex">.*Alpha</ignoreVersion>
+    <ignoreVersion type="regex">.*-M\d*</ignoreVersion>
   </ignoreVersions>
 </ruleset>
