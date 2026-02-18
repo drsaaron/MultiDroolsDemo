@@ -89,10 +89,6 @@
 
     <build>
         <plugins>
-            <!-- comment out the spring boot plug in.  Running that way doesn't
-                 seem to work with InitializePayeeAllocations.drl for reasons I
-                 do not understand.  For now, comment it out and use the build.sh
-                 and run.sh scripts to do things the old fashioned way. -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -103,6 +99,14 @@
                 <artifactId>versions-maven-plugin</artifactId>
                 <configuration>
                     <rulesUri>file:versionUpdateExclude.xml</rulesUri>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <argLine> -Xshare:off -javaagent:"${settings.localRepository}/org/mockito/mockito-core/${mockito.version}/mockito-core-${mockito.version}.jar"</argLine>
                 </configuration>
             </plugin>
             
